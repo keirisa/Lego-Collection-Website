@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Lego Collection</title>
+  <link href="/css/main.css" rel="stylesheet">
+</head>
+<body class="bg-base-100 text-base-content">
+
+  <!-- updated navbar -->
+  <%- include('./partials/navbar', { page: '/about' }) %>
+
+  <!-- hero section -->
+  <div class="hero bg-base-200 rounded-lg p-6">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">About</h1>
+        <p class="py-6">About Me</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto p-6">
+    <div class="bg-base-200 p-6 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <img src="https://i.imgflip.com/729omm.jpg" alt="Cat Image" class="w-full rounded-lg shadow-lg">
+      </div>
+      <div>
+        <p>I'm Kate de Leon and I'm currently in my 3rd semester studying Computer Programming at Seneca Polytechnic.</p>
+        <p>I like coding in JavaScript as well as working with Oracle queries :></p>
+        <p>I love cats, playing games, and my favorite artist is Keshi.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
