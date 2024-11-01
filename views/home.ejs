@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lego Collection</title>
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-base-100 text-base-content">
+
+  <!-- updated navbar -->
+  <%- include('partials/navbar', { page: '/' }) %>
+
+  <div class="container mx-auto p-4">
+
+    <!-- hro section -->
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Welcome</h1>
+          <p class="py-6">Welcome to my favorite Lego store, where creativity and imagination come to life!</p>
+          <a href="/lego/sets" class="btn btn-primary">Get Started Now</a>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- adding grid sec -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1376-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Spider-Man Action Studio</h2>
+            <p>Join Spider-Man on set as he battles his enemies in this action-packed studio setup from 2002.</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/1376-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1380-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Werewolf Ambush</h2>
+            <p>Escape the terrifying werewolf lurking in the shadows.</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/1380-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/138-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Electronic Train</h2>
+            <p>Step back in time with this vintage electronic train set, released in 1969, and bring your tracks to life.</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/138-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1381-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Vampire's Crypt</h2>
+            <p>Enter the dark crypt and uncover the secrets of the vampire's lair in this spooky set.</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/1381-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1382-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Scary Laboratory</h2>
+            <p>Step into the mad scientist's lab, where crazy experiments unfold.</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/1382-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1383-1.jpg" alt="Lego set">
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Curse of the Pharaoh</h2>
+            <p>Unlock the mysteries of ancient Egypt and brave the Pharaoh's curse in this adventure-filled set</p>
+            <div class="card-actions justify-end">
+              <a href="/lego/sets/1383-1" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

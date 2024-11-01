@@ -1,0 +1,33 @@
+<nav class="navbar bg-base-200">
+  <div class="navbar-start">
+    <a class="btn btn-ghost normal-case text-xl" href="/">Lego Collection</a>
+  </div>
+  
+  <!-- align links to the right-->
+  <div class="navbar-center hidden lg:flex ml-auto space-x-4 justify-end">
+    <!-- home link -->
+    <a class="btn btn-ghost <%= page === '/' ? 'active' : '' %>" href="/">Home</a>
+    
+    <!-- view collection link -->
+    <a class="btn btn-ghost <%= page === '/lego/sets' ? 'active' : '' %>" href="/lego/sets">View Collection</a>
+    
+    <!-- about link -->
+    <a class="btn btn-ghost <%= page === '/about' ? 'active' : '' %>" href="/about">About</a>
+  </div>
+
+  <!-- responsive navbar adjustment -->
+  <div class="navbar-end lg:hidden">
+    <div class="dropdown">
+      <label tabindex="0" class="btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </label>
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li><a href="/" class="<%= page === '/' ? 'active' : '' %>">Home</a></li>
+        <li><a href="/lego/sets" class="<%= page === '/lego/sets' ? 'active' : '' %>">View Collection</a></li>
+        <li><a href="/about" class="<%= page === '/about' ? 'active' : '' %>">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
