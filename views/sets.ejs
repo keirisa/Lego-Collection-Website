@@ -12,20 +12,20 @@
   <%- include('./partials/navbar', { page: '/lego/sets' }) %>
 
   <!-- hero section -->
-<div class="hero bg-base-200 rounded-lg p-6 mb-4">
-  <div class="hero-content text-center">
-    <div class="max-w-md">
-      <h1 class="text-5xl font-bold">Lego Collection</h1>
-      <div class="border-b border-transparent mt-2"></div> 
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="/lego/sets?theme=Studios" class="btn btn-secondary">Studios</a>
-        <a href="/lego/sets?theme=Clikits" class="btn btn-secondary">Clikits</a>
-        <a href="/lego/sets?theme=Spider-Man" class="btn btn-secondary">Spider-Man</a>
+  <div class="hero bg-base-200 rounded-lg p-6 mb-4">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">Lego Collection</h1>
+        <div class="border-b border-transparent mt-2"></div> 
+        <div class="flex justify-center space-x-4 mt-4">
+          <a href="/lego/sets?theme=Studios" class="btn btn-secondary">Studios</a>
+          <a href="/lego/sets?theme=Clikits" class="btn btn-secondary">Clikits</a>
+          <a href="/lego/sets?theme=Spider-Man" class="btn btn-secondary">Spider-Man</a>
+        </div>
+        <p class="py-6">Explore our extensive collection of Lego sets below!</p>
       </div>
-      <p class="py-6">Explore our extensive collection of Lego sets below!</p>
     </div>
   </div>
-</div>
 
   <!-- sets table -->
   <div class="container mx-auto p-4">
@@ -37,7 +37,7 @@
           <th>Theme</th>
           <th>Year</th>
           <th>Parts</th>
-          <th>Details</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -59,9 +59,11 @@
             <td class="p-2 text-center"><%= set.year %></td>
             <!-- parts -->
             <td class="p-2 text-center"><%= set.num_parts %></td>
-            <!-- details link -->
+            <!-- actions (details, edit, delete) -->
             <td class="p-2 text-center">
-              <a href="/lego/sets/<%= set.set_num %>" class="btn btn-primary">Details</a>
+              <a href="/lego/sets/<%= set.set_num %>" class="btn btn-primary mr-2 bg-blue-600 hover:bg-blue-700 text-white">Details</a>
+              <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success mr-2 bg-green-600 hover:bg-green-700 text-white">Edit</a>
+              <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error bg-red-600 hover:bg-red-700 text-white" onclick="return confirm('Are you sure you want to delete this set?');">Delete</a>
             </td>
           </tr>
         <% }) %>
