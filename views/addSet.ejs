@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Lego Set - Lego Collection</title>
+  <link href="/css/main.css" rel="stylesheet">
+</head>
+<body class="bg-base-100 text-base-content">
+
+  <!-- updated navbar -->
+  <%- include('./partials/navbar', { page: '/lego/addSet' }) %>
+
+  <!-- hero section -->
+  <div class="hero bg-base-200 rounded-lg p-6 mb-4">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">Add a New Lego Set</h1>
+        <p class="py-4">Fill out the form below to add a new Lego set to the collection.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- add set form -->
+  <div class="container mx-auto p-4 max-w-lg bg-base-200 rounded-lg shadow-lg">
+    <form action="/lego/addSet" method="POST" class="space-y-4">
+      
+      <!-- Set Number -->
+      <div class="form-control">
+        <label class="label font-semibold">Set Number</label>
+        <input type="text" name="set_num" placeholder="Enter set number" class="input input-bordered w-full" required>
+      </div>
+      
+      <!-- Name -->
+      <div class="form-control">
+        <label class="label font-semibold">Name</label>
+        <input type="text" name="name" placeholder="Enter set name" class="input input-bordered w-full" required>
+      </div>
+      
+      <!-- Year -->
+      <div class="form-control">
+        <label class="label font-semibold">Year</label>
+        <input type="number" name="year" placeholder="Enter release year" class="input input-bordered w-full" required>
+      </div>
+      
+      <!-- Number of Parts -->
+      <div class="form-control">
+        <label class="label font-semibold">Number of Parts</label>
+        <input type="number" name="num_parts" placeholder="Enter number of parts" class="input input-bordered w-full" required>
+      </div>
+      
+      <!-- Image URL -->
+      <div class="form-control">
+        <label class="label font-semibold">Image URL</label>
+        <input type="url" name="img_url" placeholder="Enter image URL" class="input input-bordered w-full" required>
+      </div>
+      
+      <!-- Theme Selection -->
+      <div class="form-control">
+        <label class="label font-semibold">Theme</label>
+        <select name="theme_id" class="select select-bordered w-full" required>
+          <option disabled selected>Select a theme</option>
+          <% themes.forEach(theme => { %>
+            <option value="<%= theme.id %>"><%= theme.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-control mt-4 text-center">
+        <button type="submit" class="btn btn-primary w-full">Add Set</button>
+      </div>
+      
+    </form>
+  </div>
+  
+</body>
+</html>

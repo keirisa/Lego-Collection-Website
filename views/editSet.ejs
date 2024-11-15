@@ -1,0 +1,44 @@
+<%- include('partials/navbar', { page: '' }) %>
+<link href="/css/main.css" rel="stylesheet">
+<div class="flex justify-center items-center min-h-screen bg-base-200">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Edit Set - <%= set.name %></h1>
+    <form action="/lego/editSet" method="POST">
+      <input type="hidden" name="set_num" value="<%= set.set_num %>" readonly class="cursor-not-allowed">
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+        <input type="text" name="name" required value="<%= set.name %>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="year">Year</label>
+        <input type="number" name="year" required value="<%= set.year %>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="num_parts">Number of Parts</label>
+        <input type="number" name="num_parts" required value="<%= set.num_parts %>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="img_url">Image URL</label>
+        <input type="url" name="img_url" required value="<%= set.img_url %>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="theme_id">Theme</label>
+        <select name="theme_id" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <% themes.forEach(theme => { %>
+            <option value="<%= theme.id %>" <%= set.theme_id === theme.id ? 'selected' : '' %>><%= theme.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update Set</button>
+      </div>
+    </form>
+    <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error mt-4">Delete Set</a>
+  </div>
+</div>

@@ -11,6 +11,9 @@
     <!-- view collection link -->
     <a class="btn btn-ghost <%= page === '/lego/sets' ? 'active' : '' %>" href="/lego/sets">View Collection</a>
     
+    <!-- add to collection link -->
+    <a class="btn btn-ghost <%= page === '/lego/addSet' ? 'active' : '' %>" href="/lego/addSet">Add to Collection</a>
+    
     <!-- about link -->
     <a class="btn btn-ghost <%= page === '/about' ? 'active' : '' %>" href="/about">About</a>
   </div>
@@ -26,6 +29,7 @@
       <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/" class="<%= page === '/' ? 'active' : '' %>">Home</a></li>
         <li><a href="/lego/sets" class="<%= page === '/lego/sets' ? 'active' : '' %>">View Collection</a></li>
+        <li><a href="/lego/addSet" class="<%= page === '/lego/addSet' ? 'active' : '' %>">Add to Collection</a></li>
         <li><a href="/about" class="<%= page === '/about' ? 'active' : '' %>">About</a></li>
       </ul>
     </div>
