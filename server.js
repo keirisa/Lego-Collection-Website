@@ -9,10 +9,15 @@
 *  Name: Kate de Leon Student ID: 146287230 Date: Nov 14, 2024
 *
 ********************************************************************************/
+require('dotenv').config(); // load environment variables from .env file
+require('pg');
 const express = require('express');
 const legoData = require('./modules/legoSets');
 const app = express();
-const HTTP_PORT = process.env.PORT || 8080;
+const HTTP_PORT = process.env.PORT || 8080; // define the http port using environment variables or default to 8080
+const Sequelize = require('sequelize');
+
+app.use(express.urlencoded({ extended: true }));
 
 // set view engine to ejs
 app.set('view engine', 'ejs');
@@ -22,9 +27,9 @@ app.set('views', `${__dirname}/views`);
 
 // serve static files from public directory
 app.use(express.static(`${__dirname}/public`));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // parse form data
 
-// initialize legoData then start server
+// initialize legodata then start server
 legoData.initialize()
     .then(() => {
         app.listen(HTTP_PORT, () => {
@@ -52,13 +57,13 @@ app.get('/lego/sets', (req, res) => {
         legoData.getSetsByTheme(theme)
             .then(data => {
                 if (data.length === 0) {
-                    res.status(404).render("404", { message: "No sets found for the specified theme." });
+                    res.status(404).render("404", { message: "no sets found for the specified theme." });
                 } else {
                     res.render("sets", { sets: data, theme });
                 }
             })
             .catch(err => {
-                res.status(500).render("500", { message: `Error fetching sets by theme: ${err.message}` });
+                res.status(500).render("500", { message: `error fetching sets by theme: ${err.message}` });
             });
     } else {
         legoData.getAllSets()
@@ -66,7 +71,7 @@ app.get('/lego/sets', (req, res) => {
                 res.render("sets", { sets: data });
             })
             .catch(err => {
-                res.status(500).render("500", { message: `Error fetching all sets: ${err.message}` });
+                res.status(500).render("500", { message: `error fetching all sets: ${err.message}` });
             });
     }
 });
@@ -77,60 +82,62 @@ app.get('/lego/sets/:set_num', (req, res) => {
     legoData.getSetByNum(setNum)
         .then(data => {
             if (!data) {
-                res.status(404).render("404", { message: "Set not found." });
+                res.status(404).render("404", { message: "set not found." });
             } else {
                 res.render("set", { set: data });
             }
         })
         .catch(err => {
-            res.status(500).render("500", { message: `Error fetching set: ${err.message}` });
+            res.status(500).render("500", { message: `error fetching set: ${err.message}` });
         });
 });
 
-// Add set
+// add set route
 app.get('/lego/addSet', (req, res) => {
     legoData.getAllThemes()
         .then(themes => res.render("addSet", { themes }))
-        .catch(err => res.status(500).render("500", { message: `Error loading themes: ${err.message}` }));
+        .catch(err => res.status(500).render("500", { message: `error loading themes: ${err.message}` }));
 });
 
+// handle form submission for adding a new set
 app.post('/lego/addSet', (req, res) => {
     legoData.addSet(req.body)
         .then(() => res.redirect("/lego/sets"))
-        .catch(err => res.status(500).render("500", { message: `Error adding set: ${err.message}` }));
+        .catch(err => res.status(500).render("500", { message: `error adding set: ${err.message}` }));
 });
 
-// Edit set
+// edit set route
 app.get('/lego/editSet/:num', (req, res) => {
     const setNum = req.params.num;
     Promise.all([legoData.getSetByNum(setNum), legoData.getAllThemes()])
         .then(([set, themes]) => {
             if (!set) {
-                res.status(404).render("404", { message: "Set not found." });
+                res.status(404).render("404", { message: "set not found." });
             } else {
                 res.render("editSet", { set, themes });
             }
         })
-        .catch(err => res.status(500).render("500", { message: `Error loading set or themes: ${err.message}` }));
+        .catch(err => res.status(500).render("500", { message: `error loading set or themes: ${err.message}` }));
 });
 
+// handle form submission for editing a set
 app.post('/lego/editSet', (req, res) => {
     legoData.editSet(req.body.set_num, req.body)
         .then(() => res.redirect("/lego/sets"))
-        .catch(err => res.status(500).render("500", { message: `Error editing set: ${err.message}` }));
+        .catch(err => res.status(500).render("500", { message: `error editing set: ${err.message}` }));
 });
 
-// Delete set
+// delete set route
 app.get('/lego/deleteSet/:num', (req, res) => {
     const setNum = req.params.num;
     legoData.deleteSet(setNum)
         .then(() => res.redirect("/lego/sets"))
-        .catch(err => res.status(500).render("500", { message: `Error deleting set: ${err.message}` }));
+        .catch(err => res.status(500).render("500", { message: `error deleting set: ${err.message}` }));
 });
 
 // 404 route (catch-all for undefined routes)
 app.use((req, res) => {
-    res.status(404).render("404", { message: "Page not found." });
+    res.status(404).render("404", { message: "page not found." });
 });
 
 module.exports = app;
