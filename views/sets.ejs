@@ -59,12 +59,10 @@
             <td class="p-2 text-center"><%= set.year %></td>
             <!-- parts -->
             <td class="p-2 text-center"><%= set.num_parts %></td>
-            <!-- actions (details, edit, delete) -->
+            <!-- actions (details, \\ no more edit, delete) -->
             <td class="p-2 text-center">
-              <a href="/lego/sets/<%= set.set_num %>" class="btn btn-primary mr-2 bg-blue-600 hover:bg-blue-700 text-white">Details</a>
-              <a href="/lego/editSet/<%= set.set_num %>" class="btn btn-success mr-2 bg-green-600 hover:bg-green-700 text-white">Edit</a>
-              <a href="/lego/deleteSet/<%= set.set_num %>" class="btn btn-error bg-red-600 hover:bg-red-700 text-white" onclick="return confirm('Are you sure you want to delete this set?');">Delete</a>
-            </td>
+              <a href="/lego/sets/<%= set.set_num %>" class="btn btn-secondary">Details</a>
+              </td>
           </tr>
         <% }) %>
       </tbody>

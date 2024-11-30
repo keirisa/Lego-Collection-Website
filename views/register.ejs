@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-base-100 text-base-content">
+
+  <!-- Navbar -->
+  <%- include('partials/navbar', { page: '/register' }) %>
+
+  <div class="container mx-auto p-4">
+
+    <!-- Hero Section -->
+    <div class="hero bg-base-200 rounded-lg p-6 mb-6">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-4xl font-bold">Create Your Account</h1>
+          <p class="py-4">Join our Lego Collection community and start your creative journey!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="grid place-items-center">
+      <div class="card bg-base-100 shadow-xl w-full max-w-lg">
+        <div class="card-body">
+          <% if (successMessage) { %>
+            <div class="alert alert-success shadow-lg">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><%= successMessage %></span>
+              </div>
+            </div>
+            <a href="/login" class="btn btn-primary w-full mt-4">Proceed to Log in</a>
+          <% } else { %>
+            <form action="/register" method="POST" class="space-y-4">
+              <div class="form-control">
+                <label class="label" for="userName">
+                  <span class="label-text">User Name</span>
+                </label>
+                <input type="text" id="userName" name="userName" placeholder="Enter your user name" required value="<%= userName || '' %>" class="input input-bordered w-full">
+              </div>
+
+              <div class="form-control">
+                <label class="label" for="password">
+                  <span class="label-text">Password</span>
+                </label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required class="input input-bordered w-full">
+              </div>
+
+              <div class="form-control">
+                <label class="label" for="password2">
+                  <span class="label-text">Confirm Password</span>
+                </label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm your password" required class="input input-bordered w-full">
+              </div>
+
+              <div class="form-control">
+                <label class="label" for="email">
+                  <span class="label-text">Email Address</span>
+                </label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required class="input input-bordered w-full">
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full">Register</button>
+            </form>
+
+            <% if (errorMessage) { %>
+              <div class="alert alert-error shadow-lg mt-4">
+                <div class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span><%= errorMessage %></span>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

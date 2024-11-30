@@ -2,36 +2,40 @@
   <div class="navbar-start">
     <a class="btn btn-ghost normal-case text-xl" href="/">Lego Collection</a>
   </div>
-  
-  <!-- align links to the right-->
-  <div class="navbar-center hidden lg:flex ml-auto space-x-4 justify-end">
-    <!-- home link -->
-    <a class="btn btn-ghost <%= page === '/' ? 'active' : '' %>" href="/">Home</a>
-    
-    <!-- view collection link -->
-    <a class="btn btn-ghost <%= page === '/lego/sets' ? 'active' : '' %>" href="/lego/sets">View Collection</a>
-    
-    <!-- add to collection link -->
-    <a class="btn btn-ghost <%= page === '/lego/addSet' ? 'active' : '' %>" href="/lego/addSet">Add to Collection</a>
-    
-    <!-- about link -->
-    <a class="btn btn-ghost <%= page === '/about' ? 'active' : '' %>" href="/about">About</a>
-  </div>
 
-  <!-- responsive navbar adjustment -->
-  <div class="navbar-end lg:hidden">
-    <div class="dropdown">
-      <label tabindex="0" class="btn btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </label>
-      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a href="/" class="<%= page === '/' ? 'active' : '' %>">Home</a></li>
-        <li><a href="/lego/sets" class="<%= page === '/lego/sets' ? 'active' : '' %>">View Collection</a></li>
-        <li><a href="/lego/addSet" class="<%= page === '/lego/addSet' ? 'active' : '' %>">Add to Collection</a></li>
-        <li><a href="/about" class="<%= page === '/about' ? 'active' : '' %>">About</a></li>
-      </ul>
-    </div>
+  <div class="navbar-center hidden lg:flex ml-auto space-x-4 justify-end">
+    <!-- Home, View Collection, About -->
+    <a class="btn btn-ghost <%= page === '/' ? 'active' : '' %>" href="/">Home</a>
+    <a class="btn btn-ghost <%= page === '/lego/sets' ? 'active' : '' %>" href="/lego/sets">View Collection</a>
+    <a class="btn btn-ghost <%= page === '/about' ? 'active' : '' %>" href="/about">About</a>
+
+    <!-- User Account Dropdown -->
+    <% if (session.user) { %>
+      <details class="dropdown">
+        <summary class="btn btn-ghost">Account: <%= session.user.userName %></summary>
+        <ul class="menu dropdown-content p-2 shadow bg-base-100 rounded-box">
+          <li>
+            <a class="<%= (page == '/lego/addSet') ? 'active' : '' %>" href="/lego/addSet">Add to Collection</a>
+          </li>
+          <li>
+            <a class="<%= (page == '/userHistory') ? 'active' : '' %>" href="/userHistory">User History</a>
+          </li>
+          <li><a href="/logout">Log Out</a></li>
+        </ul>
+      </details>
+    <% } else { %>
+      <!-- No Session Dropdown -->
+      <details class="dropdown">
+        <summary class="btn btn-ghost">Account</summary>
+        <ul class="menu dropdown-content p-2 shadow bg-base-100 rounded-box">
+          <li>
+            <a class="<%= (page == '/login') ? 'active' : '' %>" href="/login">Login</a>
+          </li>
+          <li>
+            <a class="<%= (page == '/register') ? 'active' : '' %>" href="/register">Register</a>
+          </li>
+        </ul>
+      </details>
+    <% } %>
   </div>
 </nav>
