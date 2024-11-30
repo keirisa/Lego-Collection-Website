@@ -13,6 +13,8 @@ const express = require('express');
 const legoData = require('./modules/legoSets');
 const authData = require('./modules/auth-service');
 const clientSessions = require('client-sessions');
+require('dotenv').config();
+require('pg');
 
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
