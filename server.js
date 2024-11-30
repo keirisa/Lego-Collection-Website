@@ -8,14 +8,14 @@
 * 
 *  Name: Kate de Leon Student ID: 146287230 Date: Nov 30, 2024
 ********************************************************************************/
-
-const express = require('express');
-const legoData = require('./modules/legoSets');
-const authData = require('./modules/auth-service');
-const clientSessions = require('client-sessions');
 require('dotenv').config();
 require('pg');
 
+const express = require('express');
+const path = require('path'); 
+const legoData = require('./modules/legoSets');
+const authData = require('./modules/auth-service');
+const clientSessions = require('client-sessions');
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
