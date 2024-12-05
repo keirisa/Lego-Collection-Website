@@ -11,20 +11,14 @@
 require('dotenv').config(); // load environment variables
 require('pg');
 
-const express = require('express'); 
-const path = require('path'); 
-const legoData = require('./modules/legoSets'); 
-const authData = require('./modules/auth-service'); 
-const clientSessions = require('client-sessions'); 
-const mongoose = require('mongoose'); 
+const express = require("express");
 const app = express();
+const path = require("path");
+const legoData = require("./modules/legoSets");
+const authData = require("./modules/auth-service");
+const clientSessions = require("client-sessions");
+const mongoose = require('mongoose'); 
 const HTTP_PORT = process.env.PORT || 8080;
-
-// Middleware
-app.set('view engine', 'ejs'); 
-app.set('views', `${__dirname}/views`); 
-app.use(express.static(`${__dirname}/public`)); 
-app.use(express.urlencoded({ extended: true })); 
 
 // Configure session middleware
 app.use(clientSessions({
@@ -42,6 +36,13 @@ app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
 });
+
+// Middleware
+app.set('view engine', 'ejs'); 
+app.set('views', `${__dirname}/views`); 
+app.use(express.static(`${__dirname}/public`)); 
+app.use(express.urlencoded({ extended: true })); 
+
 
 // Middleware to ensure user login
 function ensureLogin(req, res, next) {
