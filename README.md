@@ -30,7 +30,7 @@ A responsive e-commerce platform built for showcasing and managing a personal Le
 ![Product Page](./screenshots/product.png)
 ![Cart Page](./screenshots/cart.png)
 
-> *(Optional: Include `/screenshots` folder with relevant images)*
+> *(need to add `/screenshots` folder with relevant images)*
 
 ---
 
