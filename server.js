@@ -40,7 +40,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("home"); //changed from index
 });
 
 app.get("/about", (req, res) => {
